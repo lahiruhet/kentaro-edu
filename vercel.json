@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/verify/SL-CPT-2025-089", "destination": "/sl-cpt-2025-089.html" }
+    { "source": "/verify/SL-CPT-2025-089", "destination": "/sl-cpt-2025-089" }
   ],
   "headers": [
     {
