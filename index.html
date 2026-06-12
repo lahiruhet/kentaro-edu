@@ -428,7 +428,7 @@ footer a:hover{color:#fff}
       <ul class="verify-points">
         <li><span class="vp-dot" style="background:var(--navy)"></span>Tamper-proof digital records for every graduate</li>
         <li><span class="vp-dot" style="background:var(--red)"></span>Instant confirmation of programme, grade and issue date</li>
-        <li><span class="vp-dot" style="background:var(--green)"></span>Direct link format: <code>kentaro.gtel.lk/verify/&lt;credential-id&gt;</code></li>
+        <li><span class="vp-dot" style="background:var(--green)"></span>Direct link format: <code id="verifyFormat">/verify/&lt;credential-id&gt;</code></li>
       </ul>
     </div>
     <div class="verify-card">
@@ -439,8 +439,8 @@ footer a:hover{color:#fff}
         <button class="btn btn-red" id="verifyBtn" type="button">Verify</button>
       </div>
       <p class="verify-hint">Found at the bottom of every Kentaro certificate, e.g. <b>SL-CPT-2025-089</b></p>
-      <a class="verify-link" id="verifyLink" href="https://kentaro.gtel.lk/verify/SL-CPT-2025-089" target="_blank" rel="noopener">
-        kentaro.gtel.lk/verify/<span id="verifySlug">SL-CPT-2025-089</span> ↗
+      <a class="verify-link" id="verifyLink" href="/verify/SL-CPT-2025-089" target="_blank" rel="noopener">
+        <span id="verifyHost"></span>/verify/<span id="verifySlug">SL-CPT-2025-089</span> ↗
       </a>
     </div>
   </div>
@@ -505,7 +505,9 @@ footer a:hover{color:#fff}
       link=document.getElementById('verifyLink'),
       slug=document.getElementById('verifySlug'),
       btn=document.getElementById('verifyBtn'),
-      base='https://kentaro.gtel.lk/verify/';
+      base=location.origin+'/verify/';
+  document.getElementById('verifyHost').textContent=location.host;
+  document.getElementById('verifyFormat').textContent=location.host+'/verify/<credential-id>';
   function sync(){
     var id=input.value.trim().toUpperCase()||'SL-CPT-2025-089';
     slug.textContent=id;

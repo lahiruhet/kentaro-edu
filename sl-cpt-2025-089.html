@@ -464,12 +464,20 @@ body{
   </div>
   <div class="vp-url-row">
     <b>Verify at</b>
-    <a class="vp-url" id="verifyUrl" href="https://kentaro.gtel.lk/verify/SL-CPT-2025-089">https://kentaro.gtel.lk/verify/SL-CPT-2025-089</a>
+    <a class="vp-url" id="verifyUrl" href="/verify/SL-CPT-2025-089">/verify/SL-CPT-2025-089</a>
     <button class="vp-copy" id="copyVerify" type="button">Copy link</button>
   </div>
 </section>
 
 <script>
+// resolve the verification link against whatever domain is serving the page
+(function(){
+  var link=document.getElementById('verifyUrl');
+  link.textContent=link.href; // .href is the absolute URL resolved from the relative path
+  var canonical=document.querySelector('link[rel="canonical"]');
+  if(canonical)canonical.href=link.href;
+})();
+
 // fit the fixed A4 sheet to narrow screens
 (function(){
   var el=document.getElementById('fit');
